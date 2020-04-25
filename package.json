@@ -1,0 +1,9 @@
+{
+  "name": "bnsfly-games",
+  "version": "0.1.0",
+  "description": "A place to play games through the Internet",
+  "main": ".build/index.js",
+  "repository": "https://github.com/bensaufley/games",
+  "author": "Ben Saufley <contact@bensaufley.com>",
+  "license": "MIT"
+}
