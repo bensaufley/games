@@ -3,10 +3,16 @@ import { create } from 'react-test-renderer';
 
 import App from '../../src/components/App';
 
-describe('App', () => {
+describe('app', () => {
   it('renders', () => {
+    expect.assertions(1);
+
     const component = create(<App />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(component.toJSON()).toMatchInlineSnapshot(`
+      <h1>
+        Hello world!
+      </h1>
+    `);
   });
 });
