@@ -25,6 +25,8 @@ module.exports = {
 
     'simple-import-sort/sort': ['error'],
 
+    'react/state-in-constructor': ['error', 'never'],
+
     'import/no-extraneous-dependencies': [
       dependencyRule[0],
       {
