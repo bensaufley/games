@@ -1,15 +1,13 @@
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import { Configuration } from 'webpack';
 
 const config: Configuration = {
+  devServer: {
+    contentBase: path.join(__dirname, 'build'),
+    port: 7787,
+  },
   entry: './src/index',
-  output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'app.bundle.js',
-  },
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
-  },
   module: {
     rules: [
       {
@@ -17,7 +15,25 @@ const config: Configuration = {
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+      },
     ],
+  },
+  output: {
+    filename: 'app.bundle.js',
+    path: path.resolve(__dirname, 'build/assets'),
+    publicPath: '/assets/',
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: '../index.html',
+    }),
+  ],
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json'],
   },
 };
 
