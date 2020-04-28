@@ -3,11 +3,6 @@ import path from 'path';
 import { Configuration } from 'webpack';
 
 const config: Configuration = {
-  devServer: {
-    contentBase: path.join(__dirname, 'build'),
-    historyApiFallback: true,
-    port: 7787,
-  },
   entry: './src/index',
   module: {
     rules: [
