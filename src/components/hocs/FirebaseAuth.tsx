@@ -1,6 +1,6 @@
-import React, { createContext, FunctionComponent, useState } from 'react';
+import React, { createContext, FunctionComponent, useEffect, useState } from 'react';
 
-import firebase from '../lib/firebase';
+import firebase from '../../lib/firebase';
 
 export interface AuthState {
   loggedIn: boolean;
@@ -18,13 +18,17 @@ export const FirebaseAuthProvider: FunctionComponent<{}> = ({ children }) => {
     user: null,
   });
 
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      setAuthState({ user, loggedIn: true });
-    } else {
-      setAuthState({ loggedIn: false, user: null });
-    }
-  });
+  useEffect(
+    () =>
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          setAuthState({ user, loggedIn: true });
+        } else {
+          setAuthState({ loggedIn: false, user: null });
+        }
+      }),
+    [],
+  );
 
   return <FirebaseAuthContext.Provider value={authState}>{children}</FirebaseAuthContext.Provider>;
 };

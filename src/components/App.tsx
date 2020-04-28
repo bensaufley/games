@@ -1,17 +1,21 @@
 import React, { FunctionComponent } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import AppErrorBoundary from './AppErrorBoundary';
-import { FirebaseAuthProvider } from './FirebaseAuth';
-import Home from './routes/Home';
+import { FirebaseAuthProvider } from './hocs/FirebaseAuth';
+import NavBar from './NavBar';
+import Routes from './Routes';
+import LoadingProvider from './hocs/Loading';
 
 const App: FunctionComponent<{}> = () => (
   <AppErrorBoundary>
     <FirebaseAuthProvider>
-      <h1>Hello world!</h1>
-      <BrowserRouter>
-        <Route exact path="/" component={Home} />
-      </BrowserRouter>
+      <LoadingProvider>
+        <BrowserRouter>
+          <NavBar />
+          <Routes />
+        </BrowserRouter>
+      </LoadingProvider>
     </FirebaseAuthProvider>
   </AppErrorBoundary>
 );

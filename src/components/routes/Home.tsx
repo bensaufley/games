@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useContext } from 'react';
 
-import { FirebaseAuthContext } from '../FirebaseAuth';
+import { FirebaseAuthContext } from '../hocs/FirebaseAuth';
 
 const Home: FunctionComponent<{}> = () => {
   const { loggedIn } = useContext(FirebaseAuthContext);
