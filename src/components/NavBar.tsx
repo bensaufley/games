@@ -5,7 +5,7 @@ import firebase from '../lib/firebase';
 import { FirebaseAuthContext } from './hocs/FirebaseAuth';
 
 const NavBar: FunctionComponent<{}> = () => {
-  const { loggedIn } = useContext(FirebaseAuthContext);
+  const { loggedIn, user } = useContext(FirebaseAuthContext);
 
   const logOut = useCallback(() => {
     firebase.auth().signOut();
@@ -17,9 +17,14 @@ const NavBar: FunctionComponent<{}> = () => {
         <Link to="/">Games</Link>
       </h2>
       {loggedIn ? (
-        <button type="button" onClick={logOut}>
-          Log Out
-        </button>
+        <>
+          <strong>
+            User: <Link to="/profile/">{user?.displayName}</Link>
+          </strong>
+          <button type="button" onClick={logOut}>
+            Log Out
+          </button>
+        </>
       ) : (
         <Link to="/login/">Log In</Link>
       )}

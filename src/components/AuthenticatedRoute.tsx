@@ -12,7 +12,7 @@ const AuthenticatedRoute: FunctionComponent<RouteProps> = ({ children, render, c
       {...rest}
       render={(props) =>
         loggedIn ? (
-          (render && render(props)) || (Component && <Component {...props} />) || children
+          render?.(props) || (Component && <Component {...props} />) || children
         ) : (
           <Redirect to={{ pathname: '/', state: { from: props.location.pathname } }} />
         )
@@ -20,5 +20,7 @@ const AuthenticatedRoute: FunctionComponent<RouteProps> = ({ children, render, c
     />
   );
 };
+
+AuthenticatedRoute.displayName = 'AuthenticatedRoute';
 
 export default AuthenticatedRoute;
