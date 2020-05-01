@@ -68,3 +68,4 @@ build/*
 
 !.keep
 google-services.json
+functions/lib/*

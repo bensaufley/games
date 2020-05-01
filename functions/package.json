@@ -1,0 +1,13 @@
+{
+  "name": "functions",
+  "scripts": {},
+  "engines": {
+    "node": "10"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^8.10.0",
+    "firebase-functions": "^3.6.0"
+  },
+  "private": true
+}
