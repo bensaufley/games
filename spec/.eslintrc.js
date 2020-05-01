@@ -7,4 +7,7 @@ module.exports = {
   env: {
     'jest/globals': true,
   },
+  rules: {
+    'jest/no-disabled-tests': 0,
+  }
 };
